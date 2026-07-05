@@ -1,16 +1,7 @@
 ﻿/*
                          ========>>>>> TO DO: <<<<<<========
 
-    1. Array
-    2. Extracting
-    3. The Isolation between the projects at the same solution.
-    4. Explain How Namespaces work in C# and how to use them to avoid naming conflicts.
-    5. Explain Why Using Namespaces is Important in Large Projects and How it Helps in Organizing Code.
-    6. The place to store variables
-    7. Explain Structure of create variable 
-    8. Value Type (Stack,int) VS Reference Type (Heap,string,class)
-    9. Data Types (int, string, bool, float, double, decimal, struct, enum)
-    10.String operations 
+    
  */
 
 using System;
@@ -45,7 +36,7 @@ namespace Session_One
             //Console.WriteLine(multiDimensionalArray[1, 2]); // Output: 6
             ///*
             //               0  1  2
-                            
+
             // *          0  1  2  3
             // *          1  4  5  6
             // */
@@ -69,9 +60,9 @@ namespace Session_One
 
             //   1. IF Else Statement
 
-            double GPA = 3.2;
-            string university = "Helwan";
-            string AIGrade = "A";
+            //double GPA = 3.2;
+            //string university = "Helwan";
+            //string AIGrade = "A";
 
             //if (GPA > 3.0 && university == "Helwan")
             //{
@@ -139,7 +130,7 @@ namespace Session_One
 
 
             // 3. Ternary Operator
-            string Flag = GPA > 3.0 && university == "Helwan" ? "Accepted" : "Not Accepted";
+            //string Flag = GPA > 3.0 && university == "Helwan" ? "Accepted" : "Not Accepted";
 
             // 4. Loops Operators
 
@@ -173,37 +164,111 @@ namespace Session_One
                         }
             */
             // Examples: 
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine($"For Loop Iteration: {i}");
-            }
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    Console.WriteLine($"For Loop Iteration: {i}");
+            //}
 
-            int j = 0;
-            while (j < 5)
-            {
-                Console.WriteLine($"While Loop Iteration: {j}");
-                j++;
-            }
+            //int j = 0;
+            //while (j < 5)
+            //{
+            //    Console.WriteLine($"While Loop Iteration: {j}");
+            //    j++;
+            //}
 
-            int k = 0;
-            do
-            {
-                Console.WriteLine($"Do While Loop Iteration: {k}");
-                k++;
+            //int k = 0;
+            //do
+            //{
+            //    Console.WriteLine($"Do While Loop Iteration: {k}");
+            //    k++;
 
-            } while (k < 5);
+            //} while (k < 5);
 
-            string word = "Hello";
-            foreach(var w in word)
-            {
-                Console.WriteLine(w);
-            }
+            //string word = "Hello";
+            //foreach(var w in word)
+            //{
+            //    Console.WriteLine(w);
+            //}
 
 
             // Null Safe Operator
-            string? name = null;
-            // Null Coalescing Operator
-            string message = name?.ToUpper() ?? "Name is null";
+            //string? name = null;
+            //// Null Coalescing Operator
+            //string message = name?.ToUpper() ?? "Name is null";
+
+            //// Casting
+            //int num = 10;
+            //long bignum = num; // Implicit Casting (Automatic)
+            //int smallnum = (int)bignum; // Explicit Casting possible data loss
+
+            // Boxing and Unboxing
+            //int value = 42;
+            //object boxedValue = value; // Boxing
+            //int unboxedValue = (int)boxedValue; // Unboxing
+
+            // Operator to check casting
+
+            //object obj = "Hello";
+
+            //if (obj is string)
+            //{
+            //    Console.WriteLine("It's String");
+            //}
+
+            // [ as ] operator to convert types but for reference types only
+
+            //object obj = "Hello";
+
+            //string text = obj as string;
+
+            //if (text != null)
+            //{
+            //    Console.WriteLine(text);
+            //}
+
+            // Parsing is converting [ String -> Data Type ]
+
+            //string s = "25";
+
+            //int x = int.Parse(s);
+
+            //int.Parse("ABC"); // ==>> FormatException
+
+            //double d = double.Parse("5.75");
+
+            //DateTime date = DateTime.Parse("2025-06-01");
+
+            // Try Parse : is a safer way to convert strings to data types without throwing exceptions
+
+            //string s = "100";
+            //string s = "ABC";
+
+            //if (int.TryParse(s, out int number))
+            //{
+            //    Console.WriteLine(number);
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Invalid");
+            //}
+
+            // Converting Data Types using Convert Class
+
+            //string s = "15";
+
+            //int x = Convert.ToInt32(s);
+            //double d = Convert.ToDouble("5.5");
+            //bool b = Convert.ToBoolean("true");
+            //char c = Convert.ToChar("A");
+            //int x = 15;
+            //string s = Convert.ToString(x);
+
+            // The difference between Convert.ToString() and Parseing
+            //string s = null;
+
+            //Convert.ToInt32(s);   // 0
+            //int.Parse(s); // throw exception if s is null
+
 
         }
     }
