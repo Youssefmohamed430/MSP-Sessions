@@ -4,7 +4,8 @@
     
  */
 
-using System;
+using System.Collections.Concurrent;
+using System.Runtime.InteropServices;
 
 namespace Session_One
 {
@@ -12,12 +13,12 @@ namespace Session_One
     {
         static void Main(string[] args)
         {
-            string[] x = new string[5]; // ==> Explicit Size    
+            //string[] x = new string[5]; // ==> Explicit Size    
 
-            //string[] y = {"Hello", "World", "from", "C#"}; // ==> Implicit Size
+            //string[] y = { "Hello", "World", "from", "C#" }; // ==> Implicit Size
             //Console.WriteLine(y.Length);
 
-            //string[] z = new string[] {"Hello", "World", "from", "C#"}; // ==> Implicit Size
+            //string[] z = new string[4] { "Hello", "World", "from", "C#" }; // ==> Implicit Size
 
             //Console.WriteLine(y[0]);
             //y[0] = "Hi";
@@ -32,14 +33,14 @@ namespace Session_One
             //Console.WriteLine(string.Join(", ", subArray));
 
             //// Multi-Dimensional Array
-            //int[,] multiDimensionalArray = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 } };
+            //int[,] multiDimensionalArray = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 }};
             //Console.WriteLine(multiDimensionalArray[1, 2]); // Output: 6
-            ///*
-            //               0  1  2
+            /////*
+            ////               0  1  2
 
-            // *          0  1  2  3
-            // *          1  4  5  6
-            // */
+            //// *          0  1  2  3
+            //// *          1  4  5  6
+            //// */
 
 
             ////Jagged Array
@@ -60,22 +61,22 @@ namespace Session_One
 
             //   1. IF Else Statement
 
-            //double GPA = 3.2;
-            //string university = "Helwan";
-            //string AIGrade = "A";
+            double GPA = 2.6;
+            string university = "Helwan";
+            string AIGrade = "B";
 
             //if (GPA > 3.0 && university == "Helwan")
             //{
             //    Console.WriteLine("Accepted");
             //}
-            ////else if(AIGrade == "A" || AIGrade == "A+")
-            ////{
-            ////    Console.WriteLine("Accepted at AI Department");
-            ////}
-            ////else
-            ////{
-            ////    Console.WriteLine("Not Accepted");
-            ////}
+            //else if (AIGrade == "A" || AIGrade == "A+")
+            //{
+            //    Console.WriteLine("Accepted at AI Department");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Not Accepted");
+            //}
 
             //  2. Switch Statement
 
@@ -99,9 +100,9 @@ namespace Session_One
                 }
              */
 
-            //string department = "AI";
+            //string department = "IS";
 
-            //switch(department)
+            //switch (department)
             //{
             //    case "AI":
             //        Console.WriteLine("Accepted at AI Department");
@@ -116,7 +117,7 @@ namespace Session_One
 
 
             // Anoter Syntax of Switch Statement in C# 8.0 and later versions using switch expressions
-            //int number = 2;
+            //int number = 0;
 
             //string result = number switch
             //{
@@ -163,20 +164,21 @@ namespace Session_One
                             // Code to be executed
                         }
             */
+
             // Examples: 
-            //for (int i = 0; i < 5; i++)
+            //for (int i = 10,x=2; i > 0; i-=2)
             //{
             //    Console.WriteLine($"For Loop Iteration: {i}");
             //}
 
-            //int j = 0;
+            //int j = 5;
             //while (j < 5)
             //{
             //    Console.WriteLine($"While Loop Iteration: {j}");
             //    j++;
             //}
 
-            //int k = 0;
+            //int k = 5;
             //do
             //{
             //    Console.WriteLine($"Do While Loop Iteration: {k}");
@@ -185,26 +187,31 @@ namespace Session_One
             //} while (k < 5);
 
             //string word = "Hello";
-            //foreach(var w in word)
+            //foreach (var w in word)
             //{
             //    Console.WriteLine(w);
             //}
 
 
+
+
             // Null Safe Operator
-            //string? name = null;
-            //// Null Coalescing Operator
+            //string name = null;
+            // Null Coalescing Operator
             //string message = name?.ToUpper() ?? "Name is null";
+            //Console.WriteLine(message);
+
+
 
             //// Casting
-            //int num = 10;
-            //long bignum = num; // Implicit Casting (Automatic)
-            //int smallnum = (int)bignum; // Explicit Casting possible data loss
+            int num = 10;
+            long bignum = num; // Implicit Casting (Automatic)
+            int smallnum = (int)bignum; // Explicit Casting possible data loss
 
-            // Boxing and Unboxing
-            //int value = 42;
-            //object boxedValue = value; // Boxing
-            //int unboxedValue = (int)boxedValue; // Unboxing
+            //Boxing and Unboxing
+            int value = 42;
+            object boxedValue = value; // Boxing
+            int unboxedValue = (int)boxedValue; // Unboxing
 
             // Operator to check casting
 
@@ -254,22 +261,28 @@ namespace Session_One
 
             // Converting Data Types using Convert Class
 
-            //string s = "15";
+            string s = "15";
 
-            //int x = Convert.ToInt32(s);
-            //double d = Convert.ToDouble("5.5");
-            //bool b = Convert.ToBoolean("true");
-            //char c = Convert.ToChar("A");
-            //int x = 15;
-            //string s = Convert.ToString(x);
+            int x = Convert.ToInt32(s);
+            double d = Convert.ToDouble(5);
+            bool b = Convert.ToBoolean("true");
+            char c = Convert.ToChar("A");
+            int n = 15;
+            string s1 = Convert.ToString(n);
+            Console.WriteLine(s1);
 
-            // The difference between Convert.ToString() and Parseing
+            //The difference between Convert.ToString() and Parseing
             //string s = null;
 
             //Convert.ToInt32(s);   // 0
             //int.Parse(s); // throw exception if s is null
-
+            //PrintMessage("Hello");
 
         }
+        public void PrintMessage(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+
     }
 }
