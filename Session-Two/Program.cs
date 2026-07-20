@@ -27,23 +27,24 @@ namespace Session_One
             //x[0] = "Hello";
             //Console.WriteLine(x[0]);
 
-            ////Extracting Sub Array from an Array
+
+            //////Extracting Sub Array from an Array
             //string[] subArray = new string[2];
             //subArray = y[1..3]; // C# 8.0 Range Operator
             //Console.WriteLine(string.Join(", ", subArray));
 
-            //// Multi-Dimensional Array
-            //int[,] multiDimensionalArray = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 }};
+            ////// Multi-Dimensional Array
+            //int[,] multiDimensionalArray = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 } };
             //Console.WriteLine(multiDimensionalArray[1, 2]); // Output: 6
-            /////*
-            ////               0  1  2
+            ///////*
+            //////               0  1  2
 
-            //// *          0  1  2  3
-            //// *          1  4  5  6
-            //// */
+            ////// *          0  1  2  3
+            ////// *          1  4  5  6
+            ////// */
 
 
-            ////Jagged Array
+            //////Jagged Array
             //int[][] jaggedArray = new int[2][];
             //jaggedArray[0] = new int[] { 1, 2, 3 };
             //jaggedArray[1] = new int[] { 4, 5 };
@@ -61,9 +62,9 @@ namespace Session_One
 
             //   1. IF Else Statement
 
-            double GPA = 2.6;
+            double GPA = 3.1;
             string university = "Helwan";
-            string AIGrade = "B";
+            string AIGrade = "A";
 
             //if (GPA > 3.0 && university == "Helwan")
             //{
@@ -100,7 +101,7 @@ namespace Session_One
                 }
              */
 
-            //string department = "IS";
+            //string department = Console.ReadLine();
 
             //switch (department)
             //{
@@ -117,7 +118,7 @@ namespace Session_One
 
 
             // Anoter Syntax of Switch Statement in C# 8.0 and later versions using switch expressions
-            //int number = 0;
+            //int number = 1;
 
             //string result = number switch
             //{
@@ -131,7 +132,7 @@ namespace Session_One
 
 
             // 3. Ternary Operator
-            //string Flag = GPA > 3.0 && university == "Helwan" ? "Accepted" : "Not Accepted";
+            string Flag = GPA > 3.0 && university == "Helwan" ? "Accepted" : "Not Accepted";
 
             // 4. Loops Operators
 
@@ -166,12 +167,14 @@ namespace Session_One
             */
 
             // Examples: 
-            //for (int i = 10,x=2; i > 0; i-=2)
+            //for (int i = 1; i <= 10; i++ )
             //{
+            //    if(i == 5) continue;
             //    Console.WriteLine($"For Loop Iteration: {i}");
             //}
 
-            //int j = 5;
+
+            //int j = 1;
             //while (j < 5)
             //{
             //    Console.WriteLine($"While Loop Iteration: {j}");
@@ -187,19 +190,20 @@ namespace Session_One
             //} while (k < 5);
 
             //string word = "Hello";
-            //foreach (var w in word)
+            //foreach (var c in word)
             //{
-            //    Console.WriteLine(w);
+            //    Console.WriteLine(c);
             //}
 
 
-
+            //string v = "";
+            //v = null;
 
             // Null Safe Operator
-            //string name = null;
+            string? name = null;
             // Null Coalescing Operator
-            //string message = name?.ToUpper() ?? "Name is null";
-            //Console.WriteLine(message);
+            string message = name?.ToUpper() ?? "Name is null";
+            Console.WriteLine(message);
 
 
 
@@ -261,25 +265,26 @@ namespace Session_One
 
             // Converting Data Types using Convert Class
 
-            string s = "15";
+            //string s = "15";
 
-            int x = Convert.ToInt32(s);
-            double d = Convert.ToDouble(5);
-            bool b = Convert.ToBoolean("true");
-            char c = Convert.ToChar("A");
-            int n = 15;
-            string s1 = Convert.ToString(n);
-            Console.WriteLine(s1);
+            //int x = Convert.ToInt32(s);
+            //double d = Convert.ToDouble(5);
+            //bool b = Convert.ToBoolean("true");
+            //char c = Convert.ToChar("A");
+            //int n = 15;
+            //string s1 = Convert.ToString(n);
+            //Console.WriteLine(s1);
 
             //The difference between Convert.ToString() and Parseing
             //string s = null;
 
             //Convert.ToInt32(s);   // 0
             //int.Parse(s); // throw exception if s is null
-            //PrintMessage("Hello");
+
+            PrintMessage("Hello");
 
         }
-        public void PrintMessage(string msg)
+        public static void PrintMessage(string msg)
         {
             Console.WriteLine(msg);
         }
