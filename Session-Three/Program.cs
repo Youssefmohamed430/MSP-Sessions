@@ -9,23 +9,30 @@
         4.Constructor && Parameterized Constructor
         5. this Keyword
         6. Inheritance
-        7. Types of Polymorphism
+        7. Access Modifiers
+        8. Types of Polymorphism
+            - Method Overloading (Compile-Time)
             - Method Overloading (Compile-Time)
             - Method Overriding (Run-Time) [Virtual & Override KeyWords]
-        8. Abstract Class vs Interface
-        9. Static Members
-
-
-
-    
-        
+        9. Abstract Class vs Interface
+        10. Static Members
  */
 namespace Session_Three;
+
+struct Person
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
 
 class Program
 {
     static void Main(string[] args)
-    { 
+    {
+        var cat = new Cat("Cat", 12);
 
+
+
+        Console.WriteLine(cat.Age);
     }
 }
