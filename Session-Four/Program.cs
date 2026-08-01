@@ -160,6 +160,85 @@ class Program
         Console.WriteLine(FirstUser);
 
         var FirstUserId = users.First(x => x.Id == 1);
-        Console.WriteLine();
+        Console.WriteLine(FirstUserId);
+
+        var ListOfUsersSelectedColumns = users.Where(x => x.Role == "User")
+            .Select(x => new { x.Name, x.Email })
+            .ToList();
+        ListOfUsersSelectedColumns.ForEach(x => Console.WriteLine(x));
+
+        var FirstUserSelectedColumns = users.Where(x => x.Role == "User2")
+            .Select(x => new { x.Name, x.Email })
+            .FirstOrDefault();
+        Console.WriteLine(FirstUserSelectedColumns);
+
+        List<Product> products = new()
+        {
+            new Product { Id = 1, Name = "Laptop",      Category = "Electronics", Price = 45000, Stock = 10, Rating = 4.8 },
+            new Product { Id = 2, Name = "Mouse",       Category = "Electronics", Price = 500,   Stock = 100, Rating = 4.5 },
+            new Product { Id = 3, Name = "Keyboard",    Category = "Electronics", Price = 1200,  Stock = 50, Rating = 4.4 },
+            new Product { Id = 4, Name = "Desk",        Category = "Furniture",   Price = 3500,  Stock = 15, Rating = 4.2 },
+            new Product { Id = 5, Name = "Chair",       Category = "Furniture",   Price = 2800,  Stock = 20, Rating = 4.1 },
+            new Product { Id = 6, Name = "Monitor",     Category = "Electronics", Price = 9000,  Stock = 8, Rating = 4.7 },
+            new Product { Id = 7, Name = "Phone",       Category = "Electronics", Price = 32000, Stock = 30, Rating = 4.9 },
+            new Product { Id = 8, Name = "Headphones",  Category = "Electronics", Price = 1800,  Stock = 40, Rating = 4.3 },
+            new Product { Id = 9, Name = "Notebook",    Category = "Stationery",  Price = 120,   Stock = 200, Rating = 4.0 },
+            new Product { Id = 10, Name = "Pen",        Category = "Stationery",  Price = 35,    Stock = 500, Rating = 3.9 }
+        };
+
+        var SortedProducts = products.OrderBy(x => x.Price)
+                                     .ToList();
+        SortedProducts.ForEach(x => Console.WriteLine(x));
+
+        var FilteredProducts = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
+                                       .ToList();
+        FilteredProducts.ForEach(x => Console.WriteLine(x));
+
+        var FilteredProductsWithSortedPrices = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
+                                       .OrderByDescending(x => x.Price)
+                                       .ToList();
+        FilteredProductsWithSortedPrices.ForEach(x => Console.WriteLine(x));
+
+        var FilteredProductsWithSortedPricesAndRatings = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
+                                       .OrderByDescending(x => x.Rating)
+                                       .ThenBy(x => x.Price)
+                                       .ToList();
+        FilteredProductsWithSortedPricesAndRatings.ForEach(x => Console.WriteLine(x));
+
+        var ProductWithSelectedColumns = products.Where(x => x.Name == "Monitor")
+                                             .Select(x => new { x.Name, x.Price })
+                                             .FirstOrDefault();
+        Console.WriteLine(ProductWithSelectedColumns);
+
+        var IsAnyProductInStock = products.Any(x => x.Stock > 0);
+        Console.WriteLine(IsAnyProductInStock);
+
+        var IsAllProductsInStock = products.All(x => x.Stock > 0);
+        Console.WriteLine(IsAllProductsInStock);
+
+        var CountOfProductsInStock = products.Count(x => x.Stock > 0);
+        Console.WriteLine(CountOfProductsInStock);
+
+        var FilteredProductsTakeFirst3 = products.Where(x => x.Category == "Electronics")
+                                                 .Take(3)
+                                                 .ToList();
+        FilteredProductsTakeFirst3.ForEach(x => Console.WriteLine(x));
+
+        var FilteredProductsSkipFirst3 = products.Where(x => x.Category == "Electronics")
+                                                 .Take(3)
+                                                 .ToList();
+        FilteredProductsSkipFirst3.ForEach(x => Console.WriteLine(x));
+
+        var SumOfProductPrices = products.Sum(x => x.Price);
+        Console.WriteLine(SumOfProductPrices);
+
+        var AverageOfProductPrices = products.Average(x => x.Price);
+        Console.WriteLine(AverageOfProductPrices);
+
+        var MinOfProductPrices = products.Min(x => x.Price);
+        Console.WriteLine(MinOfProductPrices);
+
+        var MaxOfProductPrices = products.Max(x => x.Price);
+        Console.WriteLine(MaxOfProductPrices);
     }
 }
