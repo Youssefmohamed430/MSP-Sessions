@@ -28,20 +28,21 @@ class Program
         //list1.Add(10);
         //list1.Add(2);
         //list1.Add(5);
-        //for (int i = 0; i < list1.Count; i++)
+        //list1[0] = 1;
+        //foreach (var item in list1)
         //{
-        //    Console.WriteLine(list1[i]);
+        //    Console.Write(item + " ");
         //}
         //Console.WriteLine("-------------------- Sorted List -------------------");
         //list1.Sort();
         //for (int i = 0; i < list1.Count; i++)
         //{
-        //    Console.WriteLine(list1[i]);
+        //    Console.Write(list1[i] + " ");
         //}
         //list1.Remove(0);
         //list1.Remove(2);
         //Console.WriteLine(list1.Contains(2));
-        //list1.ForEach(x => Console.WriteLine(x));
+        //list1.ForEach(x => Console.WriteLine(x)); // lambda expression
         //list1.Clear();
 
         //var list2 = list1.ToArray();
@@ -49,14 +50,14 @@ class Program
 
         //LinkedList<int> l = new LinkedList<int>();
 
-        //l.AddFirst(1);
+        //l.AddFirst(1);//5 4 3 2 1 1
         //l.AddFirst(2);
         //l.AddFirst(3);
         //l.AddFirst(4);
         //l.AddFirst(5);
-        //Console.WriteLine(l.First + " " + l.Last);
-        //l.AddLast(1);
-        //Console.WriteLine(l.Last);
+        //Console.WriteLine(l.First.Next.Value + " " + l.Last.Previous.Value);
+        //l.AddLast(10);
+        //Console.WriteLine(l.Last.Value);
         //Console.WriteLine(l.Count);
         //l.RemoveFirst();
         //l.RemoveLast();
@@ -74,6 +75,10 @@ class Program
         //Console.WriteLine(stack.Count);
         //var element = stack.Pop();
         //Console.WriteLine(element);
+        //while (stack.Count > 0)
+        //{
+        //    Console.WriteLine(stack.Pop());
+        //}
 
 
         //Queue<int> queue = new Queue<int>();
@@ -81,9 +86,13 @@ class Program
         //queue.Enqueue(2);
         //queue.Enqueue(3);
         //queue.Enqueue(4);
-        //var first = queue.Dequeue();
-        //Console.WriteLine(first);
-        //Console.WriteLine(queue.Peek());
+        ////var first = queue.Dequeue();
+        ////Console.WriteLine(first);
+        ////Console.WriteLine(queue.Peek());
+        //while (queue.Count > 0)
+        //{
+        //    Console.Write(queue.Dequeue() + " ");
+        //}
 
         //HashSet<int> set = new HashSet<int>();
         //set.Add(1);
@@ -95,12 +104,15 @@ class Program
         //{
         //    Console.WriteLine(item);
         //}
-        
 
-        //Dictionary<int,string> dict = new Dictionary<int,string>();
-        //dict.Add(1, "Apple");
+
+        //Dictionary<int, string> dict = new Dictionary<int, string>();
+        //dict.Add(4, "Apple");
         //dict.Add(2, "Orange");
         //dict.Add(3, "Mango");
+        //dict[4] = "Banana";
+        //var x = dict[4];
+        //Console.WriteLine(x);
 
         //foreach (var item in dict)
         //{
@@ -146,69 +158,68 @@ class Program
         users.Add(user3);
         users.Add(user4);
 
-        foreach(var user in users)
-        {
-            Console.WriteLine(user);
-        }
+        //foreach (var user in users)
+        //{
+        //    Console.WriteLine(user);
+        //}
+        //// --------------------------------------- LINQ ------------------------------------------------
 
-        // --------------------------------------- LINQ ------------------------------------------------
-        
-        var ListOfUsers = users.Where(x => x.Role == "User").ToList();
-        ListOfUsers.ForEach(x => Console.WriteLine(x));
-        
-        var FirstUser = users.First(x => x.Role == "User2");
-        Console.WriteLine(FirstUser);
+        //var ListOfUsers = users.Where(user => user.Role == "User").ToList();
+        //ListOfUsers.ForEach(x => Console.WriteLine(x));
 
-        var FirstUserId = users.First(x => x.Id == 1);
-        Console.WriteLine(FirstUserId);
+        //var FirstUser = users.FirstOrDefault(x => x.Name == "User2");
+        //Console.WriteLine(FirstUser);
 
-        var ListOfUsersSelectedColumns = users.Where(x => x.Role == "User")
-            .Select(x => new { x.Name, x.Email })
-            .ToList();
-        ListOfUsersSelectedColumns.ForEach(x => Console.WriteLine(x));
+        //var FirstUserId = users.FirstOrDefault(x => x.Id == 1);
+        //Console.WriteLine(FirstUserId);
 
-        var FirstUserSelectedColumns = users.Where(x => x.Role == "User2")
-            .Select(x => new { x.Name, x.Email })
-            .FirstOrDefault();
-        Console.WriteLine(FirstUserSelectedColumns);
+        //var ListOfUsersSelectedColumns = users.Where(x => x.Role == "User")
+        //    .Select(x => new { x.Name, x.Email })
+        //    .ToList();
+        //ListOfUsersSelectedColumns.ForEach(x => Console.WriteLine(x.Name + " " + x.Email));
+
+        //var FirstUserSelectedColumns = users.Where(x => x.Name == "User2")
+        //    .Select(x => new { x.Name, x.Email })
+        //    .FirstOrDefault();
+        //Console.WriteLine(FirstUserSelectedColumns);
 
         List<Product> products = new()
         {
             new Product { Id = 1, Name = "Laptop",      Category = "Electronics", Price = 45000, Stock = 10, Rating = 4.8 },
-            new Product { Id = 2, Name = "Mouse",       Category = "Electronics", Price = 500,   Stock = 100, Rating = 4.5 },
+            new Product { Id = 2, Name = "Mouse",       Category = "Electronics", Price = 500,   Stock = 100, Rating = 4.8 },
             new Product { Id = 3, Name = "Keyboard",    Category = "Electronics", Price = 1200,  Stock = 50, Rating = 4.4 },
             new Product { Id = 4, Name = "Desk",        Category = "Furniture",   Price = 3500,  Stock = 15, Rating = 4.2 },
             new Product { Id = 5, Name = "Chair",       Category = "Furniture",   Price = 2800,  Stock = 20, Rating = 4.1 },
-            new Product { Id = 6, Name = "Monitor",     Category = "Electronics", Price = 9000,  Stock = 8, Rating = 4.7 },
+            new Product { Id = 6, Name = "Monitor",     Category = "Electronics", Price = 9000,  Stock = 8, Rating = 4.8 },
             new Product { Id = 7, Name = "Phone",       Category = "Electronics", Price = 32000, Stock = 30, Rating = 4.9 },
             new Product { Id = 8, Name = "Headphones",  Category = "Electronics", Price = 1800,  Stock = 40, Rating = 4.3 },
             new Product { Id = 9, Name = "Notebook",    Category = "Stationery",  Price = 120,   Stock = 200, Rating = 4.0 },
             new Product { Id = 10, Name = "Pen",        Category = "Stationery",  Price = 35,    Stock = 500, Rating = 3.9 }
         };
 
-        var SortedProducts = products.OrderBy(x => x.Price)
-                                     .ToList();
-        SortedProducts.ForEach(x => Console.WriteLine(x));
+        //var SortedProducts = products.OrderBy(x => x.Price)
+        //                             .ToList();
+        //SortedProducts.ForEach(x => Console.WriteLine(x));
 
-        var FilteredProducts = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
-                                       .ToList();
-        FilteredProducts.ForEach(x => Console.WriteLine(x));
+        //var FilteredProducts = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
+        //                               .ToList();
+        //FilteredProducts.ForEach(x => Console.WriteLine(x));
 
-        var FilteredProductsWithSortedPrices = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
-                                       .OrderByDescending(x => x.Price)
-                                       .ToList();
-        FilteredProductsWithSortedPrices.ForEach(x => Console.WriteLine(x));
+        //var FilteredProductsWithSortedPrices = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
+        //                               .OrderByDescending(x => x.Price)
+        //                               .ToList();
+        //FilteredProductsWithSortedPrices.ForEach(x => Console.WriteLine(x));
 
-        var FilteredProductsWithSortedPricesAndRatings = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
-                                       .OrderByDescending(x => x.Rating)
-                                       .ThenBy(x => x.Price)
-                                       .ToList();
-        FilteredProductsWithSortedPricesAndRatings.ForEach(x => Console.WriteLine(x));
+        //var FilteredProductsWithSortedPricesAndRatings = products.Where(x => x.Category == "Electronics" && x.Price > 1000)
+        //                               .OrderByDescending(x => x.Rating)
+        //                               .ThenBy(x => x.Price)
+        //                               .ToList();
+        //FilteredProductsWithSortedPricesAndRatings.ForEach(x => Console.WriteLine(x));
 
-        var ProductWithSelectedColumns = products.Where(x => x.Name == "Monitor")
-                                             .Select(x => new { x.Name, x.Price })
-                                             .FirstOrDefault();
-        Console.WriteLine(ProductWithSelectedColumns);
+        //var ProductWithSelectedColumns = products.Where(x => x.Name == "Monitor")
+        //                                     .Select(x => new { x.Name, x.Price })
+        //                                     .FirstOrDefault();
+        //Console.WriteLine(ProductWithSelectedColumns);
 
         var IsAnyProductInStock = products.Any(x => x.Stock > 0);
         Console.WriteLine(IsAnyProductInStock);
@@ -225,7 +236,7 @@ class Program
         FilteredProductsTakeFirst3.ForEach(x => Console.WriteLine(x));
 
         var FilteredProductsSkipFirst3 = products.Where(x => x.Category == "Electronics")
-                                                 .Take(3)
+                                                 .Skip(3)
                                                  .ToList();
         FilteredProductsSkipFirst3.ForEach(x => Console.WriteLine(x));
 
