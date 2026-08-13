@@ -9,6 +9,9 @@ public class DepartmentsConfig : IEntityTypeConfiguration<Department>
     {
         builder.HasKey(e => e.Id);
 
+        builder.Property(e => e.Id)
+            .UseIdentityColumn(1, 1);
+
         builder.Property(d => d.DepName)
             .HasMaxLength(50)
             .HasColumnName("Name");

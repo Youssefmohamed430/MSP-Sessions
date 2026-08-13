@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
 
 namespace Session_Five;
 
@@ -11,6 +12,10 @@ public class EmployeeConfig : IEntityTypeConfiguration<Employee>
         builder.ToTable("Employees");
 
         builder.HasKey(e => e.Id);
+
+        builder.Property(e => e.Id)
+            .UseIdentityColumn(1, 1);
+
 
         builder.Property(e => e.Name)
             .HasMaxLength(100)
