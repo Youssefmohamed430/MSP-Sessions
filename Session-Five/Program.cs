@@ -40,9 +40,13 @@ class Program
         //context.SaveChanges();
 
         var emp = context.Employees
+            .AsNoTracking()
             .Include(e => e.Department)
             .Include(e => e.Role)
-            .First(e => e.DeptId == 1);
+            .First(e => e.DeptId == 2);
+
+        //emp.Name = "Emp22";
+        //context.SaveChanges();
 
         Console.WriteLine(emp);
     }

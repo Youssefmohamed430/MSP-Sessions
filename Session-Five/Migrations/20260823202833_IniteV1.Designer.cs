@@ -11,7 +11,7 @@ using Session_Five;
 namespace Session_Five.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260812233344_IniteV1")]
+    [Migration("20260823202833_IniteV1")]
     partial class IniteV1
     {
         /// <inheritdoc />

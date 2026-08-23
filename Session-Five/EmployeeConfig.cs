@@ -20,7 +20,7 @@ public class EmployeeConfig : IEntityTypeConfiguration<Employee>
         builder.Property(e => e.Name)
             .HasMaxLength(100)
             .HasColumnType("nvarchar")
-            .HasColumnName("UserName");
+            .HasColumnName("Name");
 
         builder.Property(e => e.IsDeleted)
             .IsRequired();
