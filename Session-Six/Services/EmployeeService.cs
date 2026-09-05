@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Session_Five.DTOs;
-using Session_Five.Entities;
-using Session_Five.Infrastructure;
-using Session_Five.IServices;
+using Session_Six.DTOs;
+using Session_Six.IServices;
 
-namespace Session_Five.Services;
+namespace Session_Six.Services;
 
 public class EmployeeService(AppDbContext context) : IEmployeeService
 {
@@ -78,7 +76,8 @@ public class EmployeeService(AppDbContext context) : IEmployeeService
             {
                 Name = employee.Name,
                 RoleId = employee.RoleId,
-                DeptId = employee.DepartmentId
+                DeptId = employee.DepartmentId,
+                Email = employee.Email
             };
             context.Employees.Add(employeeEntity);
             context.SaveChanges();
@@ -128,6 +127,7 @@ public class EmployeeService(AppDbContext context) : IEmployeeService
             employeeEntity.Name = employee.Name;
             employeeEntity.RoleId = employee.RoleId;
             employeeEntity.DeptId = employee.DepartmentId;
+            employeeEntity.Email = employee.Email;
             context.SaveChanges();
         }
         catch (Exception ex)

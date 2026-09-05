@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Session_Five;
+namespace Session_Six.Entities;
 
 public class Project
 {

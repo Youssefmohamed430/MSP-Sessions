@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Session_Six.Entities;
+using System.ComponentModel.DataAnnotations;
 
-namespace Session_Five;
+namespace Session_Six;
 
 //[Table(name:"Emps")]
 public class Employee

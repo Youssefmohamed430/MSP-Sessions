@@ -1,9 +1,10 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Session_Five.Entities;
 using System.Reflection.Emit;
 
-namespace Session_Five;
+namespace Session_Five.Infrastructure;
 
 public class EmployeeConfig : IEntityTypeConfiguration<Employee>
 {

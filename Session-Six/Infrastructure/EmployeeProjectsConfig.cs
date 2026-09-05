@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Session_Six.Entities;
 
-namespace Session_Five;
+namespace Session_Six.Infrastructure;
 
 public class EmployeeProjectsConfig : IEntityTypeConfiguration<EmployeeProjects>
 {

@@ -2,20 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Session_Five.Infrastructure;
+using Session_Six;
 
 #nullable disable
 
-namespace Session_Five.Migrations
+namespace Session_Six.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260823204857_Initev2")]
-    partial class Initev2
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,26 +21,7 @@ namespace Session_Five.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Session_Five.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("DepName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Departments");
-                });
-
-            modelBuilder.Entity("Session_Five.Employee", b =>
+            modelBuilder.Entity("Session_Six.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,6 +31,10 @@ namespace Session_Five.Migrations
 
                     b.Property<int?>("DeptId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -77,7 +59,26 @@ namespace Session_Five.Migrations
                     b.ToTable("Employees", (string)null);
                 });
 
-            modelBuilder.Entity("Session_Five.EmployeeProjects", b =>
+            modelBuilder.Entity("Session_Six.Entities.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DepName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departments");
+                });
+
+            modelBuilder.Entity("Session_Six.Entities.EmployeeProjects", b =>
                 {
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
@@ -92,7 +93,7 @@ namespace Session_Five.Migrations
                     b.ToTable("EmployeeProjects");
                 });
 
-            modelBuilder.Entity("Session_Five.Project", b =>
+            modelBuilder.Entity("Session_Six.Entities.Project", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,7 +114,7 @@ namespace Session_Five.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("Session_Five.Role", b =>
+            modelBuilder.Entity("Session_Six.Entities.Role", b =>
                 {
                     b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
@@ -130,30 +131,30 @@ namespace Session_Five.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("Session_Five.Employee", b =>
+            modelBuilder.Entity("Session_Six.Employee", b =>
                 {
-                    b.HasOne("Session_Five.Department", "Department")
+                    b.HasOne("Session_Six.Entities.Department", "Department")
                         .WithMany("Employees")
                         .HasForeignKey("DeptId");
 
-                    b.HasOne("Session_Five.Role", "Role")
+                    b.HasOne("Session_Six.Entities.Role", "Role")
                         .WithOne("Employee")
-                        .HasForeignKey("Session_Five.Employee", "RoleId");
+                        .HasForeignKey("Session_Six.Employee", "RoleId");
 
                     b.Navigation("Department");
 
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Session_Five.EmployeeProjects", b =>
+            modelBuilder.Entity("Session_Six.Entities.EmployeeProjects", b =>
                 {
-                    b.HasOne("Session_Five.Employee", "Employee")
+                    b.HasOne("Session_Six.Employee", "Employee")
                         .WithMany("EmployeeProjects")
                         .HasForeignKey("EmpId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Session_Five.Project", "Project")
+                    b.HasOne("Session_Six.Entities.Project", "Project")
                         .WithMany("EmployeeProjects")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -164,22 +165,22 @@ namespace Session_Five.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("Session_Five.Department", b =>
+            modelBuilder.Entity("Session_Six.Employee", b =>
+                {
+                    b.Navigation("EmployeeProjects");
+                });
+
+            modelBuilder.Entity("Session_Six.Entities.Department", b =>
                 {
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("Session_Five.Employee", b =>
+            modelBuilder.Entity("Session_Six.Entities.Project", b =>
                 {
                     b.Navigation("EmployeeProjects");
                 });
 
-            modelBuilder.Entity("Session_Five.Project", b =>
-                {
-                    b.Navigation("EmployeeProjects");
-                });
-
-            modelBuilder.Entity("Session_Five.Role", b =>
+            modelBuilder.Entity("Session_Six.Entities.Role", b =>
                 {
                     b.Navigation("Employee")
                         .IsRequired();

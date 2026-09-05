@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Session_Five.Entities;
 
-namespace Session_Five;
+namespace Session_Five.Infrastructure;
 
 public class AppDbContext : DbContext
 {

@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Session_Five.Entities;
 
-namespace Session_Five;
+namespace Session_Five.Infrastructure;
 
 public class DepartmentsConfig : IEntityTypeConfiguration<Department>
 {

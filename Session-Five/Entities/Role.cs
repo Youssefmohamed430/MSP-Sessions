@@ -1,5 +1,4 @@
-﻿
-namespace Session_Five;
+﻿namespace Session_Five.Entities;
 
 public class Role
 {

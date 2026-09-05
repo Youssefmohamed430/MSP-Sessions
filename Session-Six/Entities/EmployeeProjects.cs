@@ -1,4 +1,4 @@
-﻿namespace Session_Five;
+﻿namespace Session_Six.Entities;
 
 public class EmployeeProjects
 {

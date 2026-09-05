@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Session_Five.DTOs;
-using Session_Five.IServices;
+using Session_Six.DTOs;
+using Session_Six.IServices;
 
 namespace Session_Six.Controllers;
 
@@ -36,8 +36,9 @@ public class EmployeeController(IEmployeeService employeeService) : ControllerBa
         var result = employeeService.Add(employee);
         if (result == "Role does not exist" || result == "Department does not exist")
             return BadRequest(result);
-        return Created();
-        //return Ok(result);
+
+        //return Created();
+        return Ok(result);
     }
 
     [HttpPut("{empId}")]

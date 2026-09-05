@@ -5,7 +5,7 @@
     3. Many To Many
  */
 using Microsoft.EntityFrameworkCore;
-using Session_Five;
+using Session_Five.Infrastructure;
 
 class Program
 {
