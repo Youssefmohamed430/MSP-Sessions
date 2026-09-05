@@ -15,8 +15,4 @@
     <ProjectReference Include="..\Session-Five\Session-Five.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

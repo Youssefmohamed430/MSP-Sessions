@@ -11,7 +11,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var context = new AppDbContext();
+        var context = new AppDbContext(new DbContextOptions<AppDbContext>());
         //var Employee = new Employee()
         //{
         //    Name = "Emp1",

@@ -11,6 +11,9 @@ public class Employee
     [MaxLength(100)]
     [Required]
     public string Name { get; set; }
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
     public bool IsDeleted { get; set; } = false;
     public int? RoleId { get; set; }
     public int? DeptId { get; set; }
