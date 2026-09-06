@@ -1,39 +1,36 @@
 ﻿/*
-   1. Client → HTTP Request → API → HTTP Response → Client
-   2. Method: GET, POST, PUT, DELETE
-   3. Status Codes: 200 => OK,
-                    201 => Created,
-                    400 => Bad Request,
-                    404 => Not Found, 
-                    500 => Internal Server Error
-   4. Request Format:
-      GET    /api/products
-      GET    /api/products/5
-      GET    /api/products?category=electronics
-      POST   /api/products
-      PUT    /api/products/5
-      DELETE /api/products/5
-    5. Body Format: JSON, XML, Form Data
-    6. Structure of a Project folder and files:
-       - Controllers/
-       - Models/
-       - Services/
-       - DTOs/
-    7. Restful API: Representational State Transfer (REST)
+    1. Client → HTTP Request → API → HTTP Response → Client
+    2. Restful API (Application Programming Interface): Representational State Transfer (REST)
        is an architectural style for designing networked applications.
        It relies on a stateless, client-server,
-       cacheable communications protocol -- and in virtually all cases, 
-       the HTTP protocol is used. 
        RESTful applications use HTTP requests to perform CRUD operations
-       (Create, Read, Update, Delete)
-       on resources, which are identified by URLs.
+       (Create, Read, Update, Delete) on resources, which are identified by URLs.
        The responses are typically in JSON or XML format.
-    8. Controller & Routing :
+    3. Structure of a Project folder and files:
+           - Controllers/
+           - Models/
+           - Services/
+           - DTOs/
+    4. Controller & Routing :
        - Controller: A controller is a class that handles HTTP requests and returns HTTP responses.
        - Routing: Routing is the process of mapping incoming HTTP requests to the appropriate controller action method.
-    9. Endpoints : 
+    5. Endpoints : 
        - An endpoint is a URL that represents a resource or a collection of resources in a RESTful API.
        - Endpoints are defined in the controller classes using attributes such as [HttpGet], [HttpPost], [HttpPut], and [HttpDelete].
+    6. Method: GET, POST, PUT, DELETE
+    7. Status Codes: 200 => OK,
+                     201 => Created,
+                     400 => Bad Request,
+                     404 => Not Found, 
+                     500 => Internal Server Error
+    8. Request Format:
+       GET    /api/products
+       GET    /api/products/5
+       GET    /api/products?category=electronics
+       POST   /api/products
+       PUT    /api/products/5
+       DELETE /api/products/5
+    9. Body Format: JSON, XML, Form Data
     10. Parameters: 
        - Parameters are values that are passed to the controller action methods to perform operations on resources.
        - Parameters Types :
@@ -47,6 +44,45 @@
         - Dependency Injection is a design pattern that allows you to inject dependencies into a class rather than creating them within the class.
         - In ASP.NET Core, DI is built-in and can be configured in the Startup.cs file or Program.cs file.
         - Services can be registered with different lifetimes: Singleton, Scoped, and Transient.
+        EXAMPLE:
+            public class OrderService
+            {
+                private readonly EmailService _emailService;
+
+                public OrderService()
+                {
+                    _emailService = new EmailService(); 
+                    --> This is not DI, because the OrderService class is creating an instance of EmailService within its constructor.        
+                }
+            } 
+
+            public class OrderService
+            {
+                private readonly EmailService _emailService;
+                public OrderService(EmailService emailService)
+                {
+                    _emailService = emailService; 
+                    --> This is DI, because the OrderService class is receiving an instance of EmailService through its constructor.
+                        it is sent to it from the outside, and it is not creating it within the class.
+                        DI Container is responsible for creating the instance of EmailService and injecting it into the OrderService class.
+                        Ex: builder.Services.AddScoped<EmailService>();
+                }
+            } 
+
+            DI With Interface:
+            public class OrderService
+            {
+                private readonly ISenderService _emailService;
+                public OrderService(ISenderService emailService)
+                {
+                    _emailService = emailService; 
+                    --> This is DI, because the OrderService class is receiving an instance of IEmailService through its constructor.
+                        it is sent to it from the outside, and it is not creating it within the class.
+                        DI Container is responsible for creating the instance of IEmailService and injecting it into the OrderService class.
+                        Ex: builder.Services.AddScoped<ISenderService, EmailService>();
+                }
+            }
+
     12. Model Validation:
         - Model validation is the process of validating the data received in the request body against the model's data annotations.
         - Data annotations are attributes that can be applied to model properties to specify validation rules.

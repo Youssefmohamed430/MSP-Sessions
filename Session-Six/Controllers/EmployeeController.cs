@@ -14,31 +14,32 @@ public class EmployeeController(IEmployeeService employeeService) : ControllerBa
     {
         var result = employeeService.GetAll();
 
-        return Ok(result);
+        return Ok(result); // 200 OK
     }
+
     [HttpGet("{id}")]
     public IActionResult GetEmployeeById(int id)
     {
-        var result = employeeService.GetById(id);
+        var result = employeeService.GetByIdV2(id);
 
-        if (result == null)
-            return NotFound($"Employee with Id {id} not found");
+        if (!result.IsSuccess)
+            return NotFound(result); // 404 Not Found
 
         return Ok(result);
     }
 
-    [HttpPost]
+    [HttpPost] // POST /api/Employee
     public IActionResult AddEmployee([FromBody] CreateEmployeeDto employee)
     {
         if(!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var result = employeeService.Add(employee);
-        if (result == "Role does not exist" || result == "Department does not exist")
+        var result = employeeService.AddV2(employee);
+        if (!result.IsSuccess)
             return BadRequest(result);
-
-        //return Created();
-        return Ok(result);
+          
+        return Created();// 201 Created
+        //return Ok(result.Message);
     }
 
     [HttpPut("{empId}")]

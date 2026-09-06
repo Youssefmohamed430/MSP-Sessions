@@ -6,11 +6,13 @@ namespace Session_Six.Services;
 
 public class EmployeeService(AppDbContext context) : IEmployeeService
 {
-    public List<EmployeeDto> GetAll()
+    public List<EmployeeDto> GetAll() // DATA Transfer Object 
     {
         var Employees = context.Employees
+            .AsNoTracking()
             .Include(e => e.Role)
             .Include(e => e.Department)
+            .Where(e => !e.IsDeleted)
             .Select(e => new EmployeeDto
             {
                 Id = e.Id,
@@ -103,7 +105,8 @@ public class EmployeeService(AppDbContext context) : IEmployeeService
             {
                 Name = employee.Name,
                 RoleId = employee.RoleId,
-                DeptId = employee.DepartmentId
+                DeptId = employee.DepartmentId,
+                Email = employee.Email
             };
             context.Employees.Add(employeeEntity);
             context.SaveChanges();
@@ -119,7 +122,8 @@ public class EmployeeService(AppDbContext context) : IEmployeeService
     {
         try
         {
-            var employeeEntity = context.Employees.FirstOrDefault(e => e.Id == empId);
+            var employeeEntity = context.Employees
+                .FirstOrDefault(e => e.Id == empId);
 
             if (employeeEntity == null)
                 return new Result { IsSuccess = false, Message = "Employee not found" };
@@ -147,6 +151,6 @@ public class EmployeeService(AppDbContext context) : IEmployeeService
 
         context.SaveChanges();
 
-        return new Result { IsSuccess = false, Message = "Employee Deleted successfully!" };
+        return new Result { IsSuccess = true, Message = "Employee Deleted successfully!" };
     }
 }

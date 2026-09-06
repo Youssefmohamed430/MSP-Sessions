@@ -15,7 +15,7 @@ public class Employee
     [EmailAddress]
     public string Email { get; set; }
     public bool IsDeleted { get; set; } = false;
-    public int? RoleId { get; set; }
+    public int? RoleId { get; set; } // 1
     public int? DeptId { get; set; }
     public Department? Department { get; set; }
     public Role? Role { get; set; }

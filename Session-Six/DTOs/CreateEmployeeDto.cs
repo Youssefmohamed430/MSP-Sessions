@@ -12,6 +12,6 @@ public class CreateEmployeeDto
     [Required]
     public int DepartmentId { get; set; }
     [Required]
-    [EmailAddress]
+    [EmailAddress] 
     public string Email { get; set; }
 }
